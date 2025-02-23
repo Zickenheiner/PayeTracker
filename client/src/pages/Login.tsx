@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { type FormEventHandler, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
 
 export default function Login() {
   const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
   const [message, setMessage] = useState<string | null>(null);
 
@@ -30,6 +31,7 @@ export default function Login() {
       if (response.ok) {
         const user = await response.json();
         setAuth(user);
+        navigate("/");
       } else {
         setMessage("Email ou mot de passe incorrect");
       }
@@ -39,7 +41,7 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+    <main className="login-container">
       <h1 className="login-title">PayeTacker</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-form-title">Connexion</h2>
@@ -72,6 +74,6 @@ export default function Login() {
           Vous n'avez pas compte ? <Link to="/register">Cliquer ici</Link>
         </p>
       </form>
-    </div>
+    </main>
   );
 }

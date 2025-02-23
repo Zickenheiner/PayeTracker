@@ -60,7 +60,7 @@
 }
 
 .login-form-button:hover {
-  background-color: #884c49;
+  background-color: var(--primary-color-hover);
   scale: 1.025;
   transition: 0.2s;
 }

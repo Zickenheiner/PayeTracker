@@ -1,0 +1,66 @@
+.navbar-container {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding: 15px;
+  background-color: var(--secondary-color);
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-link:hover {
+  scale: 1.025;
+  transition: 0.2s;
+}
+
+.navbar-history-icon {
+  stroke: var(--secondary-color);
+  fill: var(--third-color);
+  background-color: var(--third-color);
+  border-radius: 50px;
+}
+
+.navbar-history-icon.active {
+  fill: var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+.navbar-user-icon {
+  stroke: var(--third-color);
+  fill: var(--third-color);
+}
+
+.navbar-user-icon.active {
+  stroke: var(--primary-color);
+  fill: var(--primary-color);
+}
+
+.navbar-dashboard-icon {
+  stroke: var(--third-color);
+  fill: var(--third-color);
+}
+
+.navbar-dashboard-icon.active {
+  stroke: var(--primary-color);
+  fill: var(--primary-color);
+}
+
+.navbar-link-name {
+  color: var(--third-color);
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.navbar-link-name.active {
+  color: var(--primary-color);
+}

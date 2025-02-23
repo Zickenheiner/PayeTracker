@@ -13,12 +13,6 @@ type User = {
 };
 
 class UserRepository {
-  async readAll() {
-    const [rows] = await databaseClient.query<Rows>("select * from user");
-
-    return rows as User[];
-  }
-
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       "select * from user where id = ?",

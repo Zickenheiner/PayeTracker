@@ -9,13 +9,13 @@ export default function Register() {
   const [userInfos, setUserInfos] = useState<UserRegister>({});
 
   return (
-    <div className="register-container">
+    <main className="register-container">
       <h1 className="register-title">PayeTacker</h1>
       {!nextStep ? (
         <RegisterForm setNextStep={setNextStep} setUserInfos={setUserInfos} />
       ) : (
         <RegisterFormNextStep userInfos={userInfos} />
       )}
-    </div>
+    </main>
   );
 }

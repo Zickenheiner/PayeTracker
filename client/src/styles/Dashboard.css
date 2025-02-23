@@ -1,0 +1,66 @@
+.dashboard-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dashboard-title {
+  color: var(--secondary-color);
+  font-size: 32px;
+}
+
+.dashboard-section-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-section {
+  background-color: var(--secondary-color);
+  width: 90%;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 4px var(--third-color);
+}
+
+.dashboard-section-amount {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.dashboard-section-name {
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  font-weight: lighter;
+}
+
+.dashboard-add-button {
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--third-color);
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 8px 32px;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px var(--third-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dashboard-add-button:hover {
+  color: var(--primary-color-hover);
+  scale: 1.025;
+  transition: 0.2s;
+}

@@ -1,16 +1,6 @@
 import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
-const browse: RequestHandler = async (_, res, next) => {
-  try {
-    const users = await userRepository.readAll();
-
-    res.json(users);
-  } catch (err) {
-    next(err);
-  }
-};
-
 const read: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
@@ -100,4 +90,4 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, edit, destroy, verifyEmail };
+export default { read, add, edit, destroy, verifyEmail };

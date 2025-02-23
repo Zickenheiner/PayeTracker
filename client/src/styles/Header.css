@@ -1,6 +1,8 @@
 .header-container {
   width: 100vw;
   padding: 20px;
+  position: fixed;
+  top: 0;
 }
 
 .hearder-title {
