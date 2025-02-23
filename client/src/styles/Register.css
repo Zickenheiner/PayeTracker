@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   width: 100vw;
   height: 100vh;
   padding: 20px;
@@ -9,11 +9,11 @@
   gap: 40px;
 }
 
-.login-title {
+.register-title {
   color: var(--secondary-color);
 }
 
-.login-form {
+.register-form {
   width: 100%;
   background-color: var(--secondary-color);
   padding: 15px;
@@ -24,31 +24,32 @@
   gap: 25px;
 }
 
-.login-form-title {
+.register-form-title {
   color: var(--primary-color);
 }
 
-.login-form-input-container {
+.register-form-input-container {
   display: flex;
   flex-direction: column;
   width: 70%;
   gap: 5px;
 }
 
-.login-form-input {
+.register-form-input {
   width: 100%;
   height: 35px;
   border: 2px solid var(--third-color);
   border-radius: 10px;
   padding: 5px;
+  color: var(--third-color);
 }
 
-.login-form-password-forgotten {
+.register-form-password-forgotten {
   font-size: 10px;
   align-self: flex-end;
 }
 
-.login-form-button {
+.register-form-button {
   border: none;
   background-color: var(--primary-color);
   color: var(--secondary-color);
@@ -59,18 +60,29 @@
   cursor: pointer;
 }
 
-.login-form-button:hover {
+.register-form-button-next-step {
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 16px;
+  padding: 8px 32px;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px var(--third-color);
+  cursor: pointer;
+}
+
+.register-form-button:hover {
   background-color: #884c49;
   scale: 1.025;
   transition: 0.2s;
 }
 
-.login-form-go-to-register {
+.register-form-go-to-login {
   font-size: 10px;
   align-self: flex-start;
 }
 
-.login-form-message {
+.register-form-message {
   align-self: flex-end;
   font-size: 10px;
   color: var(--error-color);
