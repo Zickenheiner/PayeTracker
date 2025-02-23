@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import GlobalProvider from "./contexts/GlobalProvider";
+import AddSchedules from "./pages/AddSchedules";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -35,8 +36,12 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/",
+        path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/add",
+        element: <AddSchedules />,
       },
     ],
   },

@@ -6,35 +6,35 @@ export default function Navbar() {
   const location = useLocation();
   return (
     <nav className="navbar-container">
-      <Link className="navbar-link" to="/">
+      <Link className="navbar-link" to="/history">
         <History
-          className={`navbar-history-icon ${location.pathname === "/history" && "active"}`}
+          className={`navbar-history-icon ${location.pathname.includes("/history") && "active"}`}
           size={45}
         />
         <span
-          className={`navbar-link-name ${location.pathname === "/history" && "active"}`}
+          className={`navbar-link-name ${location.pathname.includes("/history") && "active"}`}
         >
           Historique
         </span>
       </Link>
-      <Link className="navbar-link" to="/">
+      <Link className="navbar-link" to="/dashboard">
         <LayoutDashboard
-          className={`navbar-dashboard-icon ${location.pathname === "/" && "active"}`}
+          className={`navbar-dashboard-icon ${location.pathname.includes("/dashboard") && "active"}`}
           size={45}
         />
         <span
-          className={`navbar-link-name ${location.pathname === "/" && "active"}`}
+          className={`navbar-link-name ${location.pathname.includes("/dashboard") && "active"}`}
         >
           Dashboard
         </span>
       </Link>
-      <Link className="navbar-link" to="/">
+      <Link className="navbar-link" to="/account">
         <User
-          className={`navbar-user-icon ${location.pathname === "/acccount" && "active"}`}
+          className={`navbar-user-icon ${location.pathname.includes("/acccount") && "active"}`}
           size={45}
         />
         <span
-          className={`navbar-link-name ${location.pathname === "/acccount" && "active"}`}
+          className={`navbar-link-name ${location.pathname.includes("/acccount") && "active"}`}
         >
           Compte
         </span>

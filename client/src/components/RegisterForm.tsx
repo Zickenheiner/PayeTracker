@@ -1,4 +1,4 @@
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEventHandler, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import type { UserRegister } from "../types/userTypes";
 
@@ -16,7 +16,7 @@ export default function RegisterForm({
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (passwordRef.current?.value !== confirmPasswordRef.current?.value) {
       setMessage("Les mots de passe ne correspondent pas");

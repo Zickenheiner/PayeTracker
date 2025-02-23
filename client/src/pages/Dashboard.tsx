@@ -3,7 +3,7 @@ import "../styles/Dashboard.css";
 
 export default function Dashboard() {
   return (
-    <main className="dashboard-container">
+    <main className="dashboard-page-container">
       <h1 className="dashboard-title">Janvier</h1>
       <div className="dashboard-section-container">
         <section className="dashboard-section">
@@ -15,7 +15,7 @@ export default function Dashboard() {
           <h3 className="dashboard-section-name">Net</h3>
         </section>
       </div>
-      <Link to="/add" className="dashboard-add-button">
+      <Link to="/dashboard/add" className="dashboard-add-button">
         Ajouter
       </Link>
     </main>

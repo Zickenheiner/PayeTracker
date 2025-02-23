@@ -1,11 +1,12 @@
-.dashboard-container {
+.dashboard-page-container {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 
 .dashboard-title {

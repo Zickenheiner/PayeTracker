@@ -1,4 +1,4 @@
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEventHandler, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toastSuccess } from "../services/toast";
 import type { UserRegister } from "../types/userTypes";
@@ -19,7 +19,7 @@ export default function RegisterFormNextStep({
 
   const [message, setMessage] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
 
     try {

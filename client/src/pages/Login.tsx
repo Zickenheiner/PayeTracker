@@ -41,7 +41,7 @@ export default function Login() {
   };
 
   return (
-    <main className="login-container">
+    <main className="login-page-container">
       <h1 className="login-title">PayeTacker</h1>
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-form-title">Connexion</h2>

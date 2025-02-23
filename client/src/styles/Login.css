@@ -1,6 +1,6 @@
-.login-container {
+.login-page-container {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
