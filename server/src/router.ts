@@ -14,7 +14,7 @@ router.post("/api/logout", authActions.logout);
 router.get("/api/verify-email", userActions.verifyEmail);
 router.post("/api/users", authActions.hashPassword, userActions.add);
 
-// router.use(authActions.verifyToken);
+router.use(authActions.verifyToken);
 
 router.get("/api/auth", authActions.verifyRequest);
 

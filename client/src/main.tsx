@@ -12,7 +12,7 @@ import AddSchedules from "./pages/AddSchedules";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { requireAuth } from "./services/requireAuth";
+import { redirectBasedOnAuth, requireAuth } from "./services/requireAuth";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -26,8 +26,12 @@ import { requireAuth } from "./services/requireAuth";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    element: <App />, // Renders the App component for the home page
+    element: <App />,
     children: [
+      {
+        path: "/",
+        loader: redirectBasedOnAuth,
+      },
       {
         path: "/login",
         element: <Login />,

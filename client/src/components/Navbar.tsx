@@ -9,7 +9,7 @@ export default function Navbar() {
       <Link className="navbar-link" to="/history">
         <History
           className={`navbar-history-icon ${location.pathname.includes("/history") && "active"}`}
-          size={45}
+          size={35}
         />
         <span
           className={`navbar-link-name ${location.pathname.includes("/history") && "active"}`}
@@ -20,7 +20,7 @@ export default function Navbar() {
       <Link className="navbar-link" to="/dashboard">
         <LayoutDashboard
           className={`navbar-dashboard-icon ${location.pathname.includes("/dashboard") && "active"}`}
-          size={45}
+          size={35}
         />
         <span
           className={`navbar-link-name ${location.pathname.includes("/dashboard") && "active"}`}
@@ -31,7 +31,7 @@ export default function Navbar() {
       <Link className="navbar-link" to="/account">
         <User
           className={`navbar-user-icon ${location.pathname.includes("/acccount") && "active"}`}
-          size={45}
+          size={35}
         />
         <span
           className={`navbar-link-name ${location.pathname.includes("/acccount") && "active"}`}
