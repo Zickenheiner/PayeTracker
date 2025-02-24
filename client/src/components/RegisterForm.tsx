@@ -33,12 +33,25 @@ export default function RegisterForm({
       setMessage("Les mots de passe ne correspondent pas");
       return;
     }
+
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{10,}$/.test(
+        passwordRef.current?.value as string,
+      )
+    ) {
+      setMessage(
+        "Le mot de passe doit contenir au moins 10 caractères, une lettre minuscule, une lettre majuscule et un caractère spécial",
+      );
+      return;
+    }
+
     setUserInfos({
       email: emailRef.current?.value as string,
       password: passwordRef.current?.value as string,
     });
     setNextStep(true);
   };
+
   return (
     <form className="register-form" onSubmit={handleSubmit}>
       <h2 className="register-form-title">Créer votre compte</h2>

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
-import { type FormEventHandler, useRef, useState } from "react";
+import { type FormEventHandler, useEffect, useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
 
 export default function Login() {
@@ -11,6 +11,19 @@ export default function Login() {
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+          method: "post",
+          credentials: "include",
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();

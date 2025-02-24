@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import GlobalProvider from "./contexts/GlobalProvider";
+import Account from "./pages/Account";
 import AddSchedules from "./pages/AddSchedules";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add",
         element: <AddSchedules />,
+        loader: requireAuth,
+      },
+      {
+        path: "/account",
+        element: <Account />,
         loader: requireAuth,
       },
     ],

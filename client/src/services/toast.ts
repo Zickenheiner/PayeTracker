@@ -1,3 +1,4 @@
+import "../styles/toast.css";
 import { toast } from "react-toastify";
 
 const toastSuccess = (title: string) => {
@@ -8,6 +9,7 @@ const toastSuccess = (title: string) => {
     pauseOnHover: true,
     hideProgressBar: true,
     theme: "colored",
+    className: "toast-success",
   });
 };
 
