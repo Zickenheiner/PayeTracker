@@ -27,6 +27,7 @@ export default function RegisterFormNextStep({
         `${import.meta.env.VITE_API_URL}/api/users`,
         {
           method: "POST",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },

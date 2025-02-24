@@ -20,6 +20,7 @@ export default function Login() {
         `${import.meta.env.VITE_API_URL}/api/login`,
         {
           method: "post",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: (emailRef.current as HTMLInputElement).value,
@@ -31,7 +32,7 @@ export default function Login() {
       if (response.ok) {
         const user = await response.json();
         setAuth(user);
-        navigate("/");
+        navigate("/dashboard");
       } else {
         setMessage("Email ou mot de passe incorrect");
       }

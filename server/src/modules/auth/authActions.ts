@@ -28,13 +28,29 @@ const login: RequestHandler = async (req, res, next) => {
         expiresIn: "48h",
       });
 
+      res.cookie("token", token, {
+        httpOnly: true,
+        sameSite: "strict",
+        secure: false,
+        domain: "localhost",
+        path: "/",
+      });
+
       res.json({
-        token,
         user_id: userWithoutHashedPassword.id,
       });
     } else {
       res.sendStatus(422);
     }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const logout: RequestHandler = async (_, res, next) => {
+  try {
+    res.clearCookie("token");
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
@@ -62,16 +78,11 @@ const hashPassword: RequestHandler = async (req, _, next) => {
 
 const verifyToken: RequestHandler = (req, res, next) => {
   try {
-    const authorizationHeader = req.get("Authorization");
+    const token = req.cookies.token;
 
-    if (authorizationHeader == null) {
-      throw new Error("Authorization header is missing");
-    }
-
-    const [type, token] = authorizationHeader.split(" ");
-
-    if (type !== "Bearer") {
-      throw new Error("Authorization header has not the 'Bearer' type");
+    if (!token) {
+      res.status(401).json({ message: "Unauthorized" });
+      return;
     }
 
     req.auth = jwt.verify(token, process.env.APP_SECRET as string) as MyPayload;
@@ -83,4 +94,18 @@ const verifyToken: RequestHandler = (req, res, next) => {
   }
 };
 
-export default { login, hashPassword, verifyToken };
+const verifyRequest: RequestHandler = (req, res, next) => {
+  try {
+    if (!req.auth) {
+      throw new Error("Authentication failed");
+    }
+
+    res.json({
+      user_id: Number.parseInt(req.auth.sub),
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { login, logout, hashPassword, verifyToken, verifyRequest };

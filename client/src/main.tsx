@@ -12,6 +12,7 @@ import AddSchedules from "./pages/AddSchedules";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { requireAuth } from "./services/requireAuth";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -38,10 +39,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+        loader: requireAuth,
       },
       {
         path: "/dashboard/add",
         element: <AddSchedules />,
+        loader: requireAuth,
       },
     ],
   },
