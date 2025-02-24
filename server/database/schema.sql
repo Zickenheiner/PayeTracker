@@ -8,3 +8,28 @@ create table user (
   sex varchar(5) not null,
   rate float not null
 );
+
+create table work_session (
+  id int primary key auto_increment not null,
+  user_id int not null,
+  foreign key (user_id) references user(id) on delete cascade,
+  date date not null,
+  start time not null,
+  end time not null
+);
+
+create table work_periods (
+  id int primary key auto_increment not null,
+  work_session_id int not null,
+  foreign key (work_session_id) references work_session(id) on delete cascade,
+  start time not null,
+  end time not null
+);
+
+create table paye (
+  id int primary key auto_increment not null,
+  work_session_id int not null,
+  foreign key (work_session_id) references work_session(id) on delete cascade,
+  gross float not null,
+  net float not null
+);

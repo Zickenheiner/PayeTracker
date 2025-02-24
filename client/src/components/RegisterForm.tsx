@@ -16,8 +16,19 @@ export default function RegisterForm({
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit: FormEventHandler = (e) => {
+  const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/verify-email?email=${emailRef.current?.value}`,
+      );
+      if (response.ok) {
+        setMessage("Cet email est déjà utilisé");
+        return;
+      }
+    } catch (error) {
+      console.error(error);
+    }
     if (passwordRef.current?.value !== confirmPasswordRef.current?.value) {
       setMessage("Les mots de passe ne correspondent pas");
       return;

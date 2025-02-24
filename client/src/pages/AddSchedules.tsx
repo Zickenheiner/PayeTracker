@@ -1,9 +1,10 @@
 import { CirclePlus } from "lucide-react";
 import ScheduleInput from "../components/ScheduleInput";
 import "../styles/AddSchedules.css";
-import { type FormEventHandler, useState } from "react";
+import { type FormEventHandler, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
+import { useAuth } from "../contexts/AuthProvider";
 
 interface ScheduleType {
   id: string;
@@ -13,6 +14,8 @@ interface ScheduleType {
 
 export default function AddSchedules() {
   const navigate = useNavigate();
+  const { auth } = useAuth();
+  const dateRef = useRef<HTMLInputElement>(null);
   const [schedule, setSchedule] = useState<ScheduleType[]>([
     {
       id: uid(),
@@ -32,9 +35,30 @@ export default function AddSchedules() {
     ]);
   };
 
-  const handleSubmit: FormEventHandler = (e) => {
+  const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/work_sessions`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: auth?.user_id,
+            date: dateRef.current?.value,
+            schedules: schedule,
+          }),
+        },
+      );
+      if (response.ok) {
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -44,6 +68,15 @@ export default function AddSchedules() {
         <h2 className="add-schedules-form-title">
           Entrer la plage de votre astreinte :
         </h2>
+        <p>
+          Le :{" "}
+          <input
+            type="date"
+            ref={dateRef}
+            className="add-schedules-form-date"
+            required
+          />
+        </p>
         <ScheduleInput
           edit={false}
           remove={false}

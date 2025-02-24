@@ -80,10 +80,10 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
     const email = req.query.email as string;
     const user = await userRepository.readByEmail(email);
 
-    if (user == null) {
-      res.sendStatus(404);
-    } else {
+    if (user) {
       res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
     }
   } catch (err) {
     next(err);
