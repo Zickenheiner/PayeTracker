@@ -1,10 +1,4 @@
 import type { RequestHandler } from "express";
-import {
-  calculateAmount,
-  calculateHours,
-} from "../../../services/hoursService";
-import payeRepository from "../paye/payeRepository";
-import userRepository from "../user/userRepository";
 import workPeriodsRepository from "../work_periods/workPeriodsRepository";
 import workSessionRepository from "./workSessionRepository";
 
@@ -20,7 +14,7 @@ const browse: RequestHandler = async (req, res, next) => {
 
 const read: RequestHandler = async (req, res, next) => {
   try {
-    const workSessionId = Number(req.params.id);
+    const workSessionId = Number.parseInt(req.params.id);
     const workSession = await workSessionRepository.read(workSessionId);
 
     if (workSession == null) {
@@ -35,8 +29,21 @@ const read: RequestHandler = async (req, res, next) => {
 
 const readByUser: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
+    const userId = Number.parseInt(req.params.id);
     const workSessions = await workSessionRepository.readByUser(userId);
+
+    res.status(200).json(workSessions);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const readByUserCurrentMonth: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number.parseInt(req.params.id);
+
+    const workSessions =
+      await workSessionRepository.readByUserCurrentMonth(userId);
 
     res.status(200).json(workSessions);
   } catch (err) {
@@ -54,15 +61,6 @@ const add: RequestHandler = async (req, res, next) => {
       schedules: firstSchedule,
     };
 
-    const rateMinutes = (await userRepository.read(req.body.user_id)).rate / 60;
-
-    const { hoursMoved, hoursNotMoved } = calculateHours(
-      firstSchedule,
-      otherSchedules,
-    );
-
-    const amount = calculateAmount(hoursMoved, hoursNotMoved, rateMinutes);
-
     const insertId = await workSessionRepository.create(newWorkSession);
 
     for (const schedule of otherSchedules) {
@@ -73,16 +71,10 @@ const add: RequestHandler = async (req, res, next) => {
       });
     }
 
-    await payeRepository.create({
-      work_session_id: insertId,
-      gross: amount,
-      net: amount * 0.78,
-    });
-
     res.status(201).json({ insertId });
   } catch (err) {
     next(err);
   }
 };
 
-export default { browse, read, readByUser, add };
+export default { browse, read, readByUser, readByUserCurrentMonth, add };

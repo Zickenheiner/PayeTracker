@@ -25,11 +25,3 @@ create table work_periods (
   start time not null,
   end time not null
 );
-
-create table paye (
-  id int primary key auto_increment not null,
-  work_session_id int not null,
-  foreign key (work_session_id) references work_session(id) on delete cascade,
-  gross float not null,
-  net float not null
-);

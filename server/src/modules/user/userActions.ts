@@ -3,7 +3,7 @@ import userRepository from "./userRepository";
 
 const read: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
+    const userId = Number.parseInt(req.params.id);
     const user = await userRepository.read(userId);
 
     const { hashed_password, ...userWithoutHashedPassword } = user;

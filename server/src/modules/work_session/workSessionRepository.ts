@@ -32,10 +32,19 @@ class WorkSessionRepository {
     return rows[0];
   }
 
-  async readByUser(user_id: number) {
+  async readByUser(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       "select * from work_session where user_id = ?",
-      [user_id],
+      [id],
+    );
+
+    return rows;
+  }
+
+  async readByUserCurrentMonth(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from work_session ws where ws.user_id = ? and year(ws.date) = year(curdate()) and month(ws.date) = month(curdate())",
+      [id],
     );
 
     return rows;

@@ -15,7 +15,7 @@ type User = {
 class UserRepository {
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where id = ?",
+      "SELECT id, email, firstname, lastname, DATE_FORMAT(birthdate, '%Y-%m-%d') AS birthdate, sex, rate FROM user WHERE id = ?",
       [id],
     );
 

@@ -9,6 +9,15 @@ interface WorkPeriods {
 }
 
 class WorkPeriodsRepository {
+  async readByWorkSession(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from work_periods where work_session_id = ?",
+      [id],
+    );
+
+    return rows;
+  }
+
   async create(work_period: Omit<WorkPeriods, "id">) {
     const [result] = await databaseClient.query<Result>(
       "insert into work_periods (work_session_id, start, end) values (?, ?, ?)",

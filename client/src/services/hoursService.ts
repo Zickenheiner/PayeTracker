@@ -1,5 +1,14 @@
 interface Schedule {
   id: string;
+  user_id: number;
+  date: string;
+  start: string;
+  end: string;
+}
+
+interface WorkingHours {
+  id: string;
+  work_session_id: number;
   start: string;
   end: string;
 }
@@ -25,9 +34,9 @@ const calculateHoursNotMoved = (minutes: number, rateMinutes: number) => {
   return minutes * rateMinutes * 0.25;
 };
 
-export const calculateHours = (
+const calculateHours = (
   schedule: Schedule,
-  workingHours: Schedule[] | [],
+  workingHours: WorkingHours[] | [],
 ) => {
   const totalHours = parseTime(schedule.end) - parseTime(schedule.start);
 
@@ -43,7 +52,7 @@ export const calculateHours = (
   return { hoursMoved, hoursNotMoved };
 };
 
-export const calculateAmount = (
+const calculateAmount = (
   hoursMoved: number[],
   hoursNotMoved: number,
   rateMinutes: number,
@@ -53,4 +62,13 @@ export const calculateAmount = (
     0,
   );
   return amountMoved + calculateHoursNotMoved(hoursNotMoved, rateMinutes);
+};
+
+export const determineAmountFromSchedule = (
+  schedule: Schedule,
+  workingHours: WorkingHours[] | [],
+  rate: number,
+) => {
+  const { hoursMoved, hoursNotMoved } = calculateHours(schedule, workingHours);
+  return calculateAmount(hoursMoved, hoursNotMoved, rate / 60);
 };
