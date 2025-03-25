@@ -64,6 +64,7 @@ app.use(cookieParser());
 import router from "./router";
 
 // Mount the API router under the "/api" endpoint
+app.use(router);
 
 /* ************************************************************************* */
 
@@ -100,7 +101,6 @@ if (fs.existsSync(clientBuildPath)) {
   });
 }
 
-app.use(router);
 /* ************************************************************************* */
 
 // Middleware for Error Logging
