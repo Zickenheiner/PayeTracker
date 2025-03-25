@@ -1,12 +1,14 @@
 .add-schedules-page-container {
   width: 100vw;
-  height: 80vh;
+  min-height: calc(100vh - 150px);
+  margin-bottom: 85px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 40px;
+  overflow-x: auto;
 }
 
 .add-schedules-title {

@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { redirectBasedOnAuth, requireAuth } from "./services/requireAuth";
+import History from "./pages/History";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
+        loader: requireAuth,
+      },
+      {
+        path: "/history",
+        element: <History />,
         loader: requireAuth,
       },
     ],
