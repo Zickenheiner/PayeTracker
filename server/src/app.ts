@@ -64,7 +64,7 @@ app.use(cookieParser());
 import router from "./router";
 
 // Mount the API router under the "/api" endpoint
-app.use(router);
+app.use("/api", router);
 
 /* ************************************************************************* */
 

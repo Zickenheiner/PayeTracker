@@ -8,34 +8,34 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
-router.get("/api", (req, res) => {
+router.get("/", (req, res) => {
   res.json({ message: "The API works" });
 });
 
-router.post("/api/login", authActions.login);
-router.post("/api/logout", authActions.logout);
+router.post("/login", authActions.login);
+router.post("/logout", authActions.logout);
 
-router.get("/api/verify-email", userActions.verifyEmail);
-router.post("/api/users", authActions.hashPassword, userActions.add);
+router.get("/verify-email", userActions.verifyEmail);
+router.post("/users", authActions.hashPassword, userActions.add);
 
-router.put("/api/users/:id", userActions.edit);
+router.put("/users/:id", userActions.edit);
 
 router.use(authActions.verifyToken);
 
-router.get("/api/auth", authActions.verifyRequest);
+router.get("/auth", authActions.verifyRequest);
 
-router.get("/api/users/:id", userActions.read);
+router.get("/users/:id", userActions.read);
 
-router.get("/api/work_sessions", workSessionActions.browse);
-router.get("/api/work_sessions/:id", workSessionActions.read);
-router.get("/api/work_sessions/user/:id", workSessionActions.readByUser);
+router.get("/work_sessions", workSessionActions.browse);
+router.get("/work_sessions/:id", workSessionActions.read);
+router.get("/work_sessions/user/:id", workSessionActions.readByUser);
 router.get(
-  "/api/work_sessions/current/user/:id",
+  "/work_sessions/current/user/:id",
   workSessionActions.readByUserCurrentMonth,
 );
-router.post("/api/work_sessions", workSessionActions.add);
+router.post("/work_sessions", workSessionActions.add);
 
-router.get("/api/work_periods/:id", workPeriodsActions.readByWorkSession);
+router.get("/work_periods/:id", workPeriodsActions.readByWorkSession);
 
 /* ************************************************************************* */
 
