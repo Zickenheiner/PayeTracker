@@ -1,0 +1,73 @@
+.add-schedules-page-container {
+  width: 100vw;
+  min-height: calc(100vh - 150px);
+  margin-bottom: 85px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  overflow-x: auto;
+}
+
+.add-schedules-title {
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.add-schedules-form-container {
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-schedules-form-title {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.add-schedules-form-date {
+  background-color: var(--fourth-color);
+  color: var(--third-color);
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.add-schedules-form-add-button {
+  stroke: var(--secondary-color);
+  fill: var(--primary-color);
+  cursor: pointer;
+}
+
+.add-schedules-form-add-button:hover {
+  scale: 1.1;
+  transition: 0.2s;
+}
+
+.add-schedules-form-button {
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 16px;
+  padding: 8px 40px;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px var(--third-color);
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+}
+
+.add-schedules-form-button:hover {
+  background-color: var(--primary-color-hover);
+  scale: 1.025;
+  transition: 0.2s;
+}

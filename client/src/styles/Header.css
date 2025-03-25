@@ -1,0 +1,10 @@
+.header-container {
+  width: 100vw;
+  padding: 20px;
+}
+
+.hearder-title {
+  color: var(--secondary-color);
+  font-size: 16px;
+  font-weight: bold;
+}
