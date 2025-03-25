@@ -31,9 +31,9 @@ const login: RequestHandler = async (req, res, next) => {
 
       res.cookie("token", token, {
         httpOnly: true,
-        sameSite: "strict",
-        secure: false,
-        domain: "localhost",
+        sameSite: "lax",
+        secure: true,
+        domain: "payetracker.fr",
         path: "/",
       });
 
