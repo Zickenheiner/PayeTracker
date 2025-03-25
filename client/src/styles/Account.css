@@ -1,0 +1,63 @@
+.account-page-container {
+  width: 100vw;
+  min-height: calc(100vh - 150px);
+  margin-bottom: 85px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  overflow-x: auto;
+}
+
+.account-title {
+  color: var(--secondary-color);
+  font-size: 32px;
+}
+
+.account-section-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+}
+
+.account-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.account-section-info-container {
+  padding: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.account-section-info-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.account-logout-button {
+  border: none;
+  width: fit-content;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  align-self: center;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px var(--third-color);
+  margin-top: 15px;
+  cursor: pointer;
+}

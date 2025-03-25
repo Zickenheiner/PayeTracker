@@ -14,5 +14,5 @@ jobs:
         with:
           username: ${{ secrets.SSH_USER }}
           host: ${{ secrets.SSH_HOST }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: cd && cd traefik/deploy && bash ./js-project.sh ${{ github.event.repository.owner.name }} ${{ github.event.repository.name }} ${{ vars.PROJECT_NAME }} '${{ toJSON(vars) }}'

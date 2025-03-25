@@ -1,0 +1,35 @@
+.schedules-input-container {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedules-input {
+  background-color: var(--fourth-color);
+  color: var(--third-color);
+  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.schedules-input-remove {
+  stroke: var(--primary-color);
+  cursor: pointer;
+}
+
+.schedules-input-remove:hover {
+  scale: 1.1;
+  transition: 0.2s;
+}
+
+.schedules-input-edit {
+  cursor: pointer;
+}
+
+.schedules-input-edit:hover {
+  scale: 1.1;
+  transition: 0.2s;
+}
