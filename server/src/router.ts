@@ -8,6 +8,10 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
+router.get("/api", (req, res) => {
+  res.json({ message: "The API works" });
+});
+
 router.post("/api/login", authActions.login);
 router.post("/api/logout", authActions.logout);
 
