@@ -11,10 +11,10 @@ import GlobalProvider from "./contexts/GlobalProvider";
 import Account from "./pages/Account";
 import AddSchedules from "./pages/AddSchedules";
 import Dashboard from "./pages/Dashboard";
+import History from "./pages/History";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { redirectBasedOnAuth, requireAuth } from "./services/requireAuth";
-import History from "./pages/History";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
